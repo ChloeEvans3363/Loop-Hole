@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hit");
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Hit");
         }
