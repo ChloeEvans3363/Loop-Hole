@@ -28,6 +28,6 @@ public class GameScoreManager : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
-        Debug.Log("Time: " + timeElapsed);
+        //Debug.Log("Time: " + timeElapsed);
     }
 }
