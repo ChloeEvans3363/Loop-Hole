@@ -11,6 +11,7 @@ public class GameScoreManager : MonoBehaviour
     private float fallSpeed;
     private int coins;
     private int health;
+    private float score;
 
     public float FallSpeed
     {
@@ -22,12 +23,18 @@ public class GameScoreManager : MonoBehaviour
     void Start()
     {
         health = 3;
+        score = 0;
+        fallSpeed = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+        fallSpeed += 0.2f * Time.deltaTime;
+        score += (fallSpeed + 2 *Time.deltaTime) / 1000;
         timeElapsed += Time.deltaTime;
+
+        Debug.Log("Score: " + score);
         //Debug.Log("Time: " + timeElapsed);
     }
 }
