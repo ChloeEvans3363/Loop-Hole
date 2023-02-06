@@ -31,10 +31,9 @@ public class GameScoreManager : MonoBehaviour
     void Update()
     {
         fallSpeed += 0.2f * Time.deltaTime;
-        score += (fallSpeed + 2 *Time.deltaTime) / 1000;
+        score += (fallSpeed + Time.deltaTime) / 1000;
         timeElapsed += Time.deltaTime;
 
         Debug.Log("Score: " + score);
-        //Debug.Log("Time: " + timeElapsed);
     }
 }
