@@ -30,6 +30,7 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Hit");
+            GetComponent<SpriteRenderer>().color = Color.blue;
         }
     }
 
@@ -41,5 +42,6 @@ public class Obstacle : MonoBehaviour
     private void ResetPosition()
     {
         transform.position = ScreenToWorld(Random.Range(0 + GetComponent<SpriteRenderer>().size.x, Screen.width - GetComponent<SpriteRenderer>().size.x), Random.Range(-Screen.height + GetComponent<SpriteRenderer>().size.y, 0 - GetComponent<SpriteRenderer>().size.y));
+        GetComponent<SpriteRenderer>().color = Color.red;
     }
 }
