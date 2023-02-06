@@ -20,11 +20,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y, transform.position.z);
-        //mousePosition = Input.mousePosition;
-        //mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        //position = Vector2.Lerp(transform.position, new Vector2(mousePosition.x, 0), moveSpeed);
-
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         position = Vector2.Lerp(transform.position, new Vector2(mousePosition.x, 0), moveSpeed);
     }
