@@ -41,7 +41,12 @@ public class Obstacle : MonoBehaviour
 
     private void ResetPosition()
     {
-        transform.position = ScreenToWorld(Random.Range(0 + GetComponent<SpriteRenderer>().size.x, Screen.width - GetComponent<SpriteRenderer>().size.x), Random.Range(-Screen.height + GetComponent<SpriteRenderer>().size.y, 0 - GetComponent<SpriteRenderer>().size.y));
+        Vector2 test = new Vector3(Random.Range(0 + GetComponent<SpriteRenderer>().size.x, Screen.width - GetComponent<SpriteRenderer>().size.x), Random.Range(-Screen.height + GetComponent<SpriteRenderer>().size.y, 0 - GetComponent<SpriteRenderer>().size.y));
+        transform.position = ScreenToWorld(test.x, test.y);
+        Debug.Log(ScreenToWorld(test.x, test.y));
+        //float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
+        //float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x + GetComponent<SpriteRenderer>().size.x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x - GetComponent<SpriteRenderer>().size.x);
+        //transform.position = new Vector2(spawnX, spawnY);
         GetComponent<SpriteRenderer>().color = Color.red;
     }
 }
