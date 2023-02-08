@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public float fallSpeed = 5.0f;
-
+    public static GameManager gameManager;
 
     void Start()
     {
-
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
     }
 
     void Update()
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         Vector3 topBorder = ScreenToWorld(0, Screen.height);
-        transform.Translate(Vector3.up * Time.deltaTime * fallSpeed);
-        fallSpeed += 1.0f * Time.deltaTime;
+        transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().wallFallSpeed);
+        gameManager.GetComponent<GameManager>().wallFallSpeed += 1.0f * Time.deltaTime;
     
         if (transform.position.y - 5 > topBorder.y)
         {

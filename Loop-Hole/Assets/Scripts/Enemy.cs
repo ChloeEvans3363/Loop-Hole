@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public static GameManager gameManager;
-
 
     void Start()
     {
@@ -34,8 +33,11 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit");
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            //Debug.Log("Hit");
+            //Time.timeScale = 0;
+            gameManager.GetComponent<GameManager>().obstacleFallSpeed = -2.5f;
+            gameManager.GetComponent<GameManager>().wallFallSpeed = -6;
+            GetComponent<SpriteRenderer>().color = Color.gray;
         }
     }
 
@@ -46,12 +48,12 @@ public class Obstacle : MonoBehaviour
 
     private void ResetPosition()
     {
-        Vector2 test = new Vector3(Random.Range(0 + GetComponent<SpriteRenderer>().size.x, Screen.width - GetComponent<SpriteRenderer>().size.x), Random.Range(-Screen.height + GetComponent<SpriteRenderer>().size.y, 0 - GetComponent<SpriteRenderer>().size.y));
+        Vector2 test = new Vector3(500, Random.Range(-Screen.height + GetComponent<SpriteRenderer>().size.y, 0 - GetComponent<SpriteRenderer>().size.y));
         transform.position = ScreenToWorld(test.x, test.y);
         //Debug.Log(ScreenToWorld(test.x, test.y));
         //float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
         //float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x + GetComponent<SpriteRenderer>().size.x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x - GetComponent<SpriteRenderer>().size.x);
         //transform.position = new Vector2(spawnX, spawnY);
-        GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<SpriteRenderer>().color = Color.green;
     }
 }
