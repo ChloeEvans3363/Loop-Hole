@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public float obstacleFallSpeed = 3;
-    public float wallFallSpeed = 5.0f;
+    public float fallSpeed = 3;
+    public float fallIncrease = 0.8f;
+    public float currentFallSpeed;
 
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
     //Also why do the obstacles and walls have separate fall speeds? That doesn't make much sense.
@@ -14,18 +15,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float initialFallSpeed;
     [SerializeField] private float fallIncreaseRate;
     [SerializeField] private float fallSpeedCap;
-    private float fallSpeed;
     private int coins;
     private int health;
     private float score;
     private float depth;
     private float iTime;
 
-    public float FallSpeed
-    {
-        get { return fallSpeed; }
-        set { fallSpeed = value; }
-    }
+
 
     public float Depth
     {
@@ -70,15 +66,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fallSpeed += 0.2f * Time.deltaTime;
+        if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
+        {
+            fallSpeed += 2 * Time.deltaTime;
+            currentFallSpeed = fallSpeed;
+            //Debug.Log("bye");
+        }
+        else if(fallSpeed < currentFallSpeed)
+        {
+            fallSpeed += 10 * Time.deltaTime;
+            //Debug.Log("hi");
+        }
         score += (fallSpeed + Time.deltaTime) / 1000;
         timeElapsed += Time.deltaTime;
         if(iTime > 0f)
         {
             iTime -= Time.deltaTime;
         }
+        Debug.Log(fallSpeed);
 
-        depth += obstacleFallSpeed * Time.deltaTime;
+        depth += fallSpeed * Time.deltaTime;
         //Debug.Log("Score: " + score);
     }
 

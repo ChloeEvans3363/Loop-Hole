@@ -21,8 +21,8 @@ public class Obstacle : MonoBehaviour
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         Vector3 topBorder = ScreenToWorld(0, Screen.height);
-        transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().obstacleFallSpeed);
-        gameManager.GetComponent<GameManager>().obstacleFallSpeed += 0.8f * Time.deltaTime;
+        transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().fallSpeed);
+
 
         if (transform.position.y - renderer.size.y > topBorder.y)
         {

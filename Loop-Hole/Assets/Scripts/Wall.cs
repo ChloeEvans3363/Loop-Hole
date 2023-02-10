@@ -18,8 +18,7 @@ public class Wall : MonoBehaviour
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
         Vector3 topBorder = ScreenToWorld(0, Screen.height);
-        transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().wallFallSpeed);
-        gameManager.GetComponent<GameManager>().wallFallSpeed += 1.0f * Time.deltaTime;
+        transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().fallSpeed);
     
         if (transform.position.y - 5 > topBorder.y)
         {
