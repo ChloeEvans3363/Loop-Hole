@@ -33,8 +33,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Debug.Log("Hit");
-            //Time.timeScale = 0;
             gameManager.GetComponent<GameManager>().fallSpeed = -3f;
             ResetPosition();
         }

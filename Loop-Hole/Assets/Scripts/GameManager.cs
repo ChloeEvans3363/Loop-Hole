@@ -83,7 +83,6 @@ public class GameManager : MonoBehaviour
         {
             iTime -= Time.deltaTime;
         }
-        Debug.Log(fallSpeed);
 
         depth += fallSpeed * Time.deltaTime;
         //Debug.Log("Score: " + score);
@@ -95,7 +94,7 @@ public class GameManager : MonoBehaviour
     /// <param name="amt"></param>
     public void TakeDamage(int amt)
     {
-        if(iTime <= 0f)
+        if(iTime <= 0f && health != 0)
         {
             iTime = 0.5f;
             health -= amt;

@@ -34,8 +34,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit");
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            gameManager.GetComponent<GameManager>().TakeDamage(1);
         }
     }
 

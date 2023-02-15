@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
+    public static GameManager gameManager;
+
+    void Start()
+    {
+        if (gameManager == null)
+        {
+            gameManager = FindObjectOfType<GameManager>();
+        }
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            this.transform.parent.gameObject.GetComponent<SpriteRenderer>().color = Color.cyan;
+            gameManager.GetComponent<GameManager>().TakeDamage(1);
         }
     }
 }
