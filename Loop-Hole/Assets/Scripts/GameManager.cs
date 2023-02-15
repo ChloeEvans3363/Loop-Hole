@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public float fallSpeed = 3;
     public float fallIncrease = 0.8f;
     public float currentFallSpeed;
+    public int stage;
+
+    private bool tutorial = false;
 
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
     //Also why do the obstacles and walls have separate fall speeds? That doesn't make much sense.
@@ -61,27 +64,35 @@ public class GameManager : MonoBehaviour
         score = 0;
         fallSpeed = 3;
         iTime = 0f;
+        stage = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
+        if (tutorial)
         {
-            fallSpeed += 2 * Time.deltaTime;
-            currentFallSpeed = fallSpeed;
-            //Debug.Log("bye");
+            Tutorial(stage);
         }
-        else if(fallSpeed < currentFallSpeed)
+        else
         {
-            fallSpeed += 10 * Time.deltaTime;
-            //Debug.Log("hi");
-        }
-        score += (fallSpeed + Time.deltaTime) / 1000;
-        timeElapsed += Time.deltaTime;
-        if(iTime > 0f)
-        {
-            iTime -= Time.deltaTime;
+            if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
+            {
+                fallSpeed += 2 * Time.deltaTime;
+                currentFallSpeed = fallSpeed;
+                //Debug.Log("bye");
+            }
+            else if (fallSpeed < currentFallSpeed)
+            {
+                fallSpeed += 10 * Time.deltaTime;
+                //Debug.Log("hi");
+            }
+            score += (fallSpeed + Time.deltaTime) / 1000;
+            timeElapsed += Time.deltaTime;
+            if (iTime > 0f)
+            {
+                iTime -= Time.deltaTime;
+            }
         }
 
         depth += fallSpeed * Time.deltaTime;
@@ -98,6 +109,19 @@ public class GameManager : MonoBehaviour
         {
             iTime = 0.5f;
             health -= amt;
+        }
+    }
+
+    private void Tutorial(int stage)
+    {
+        //fallSpeed = 2;
+        if(stage == 1)
+        {
+            Debug.Log("stage 1");
+        }
+        if(stage == 2)
+        {
+            Debug.Log("stage 2");
         }
     }
 }
