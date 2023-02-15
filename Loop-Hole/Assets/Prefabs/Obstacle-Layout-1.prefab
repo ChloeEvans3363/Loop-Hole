@@ -383,7 +383,7 @@ GameObject:
   - component: {fileID: 2818158179831843656}
   - component: {fileID: 2818158179831843657}
   m_Layer: 0
-  m_Name: Obstacle Layout
+  m_Name: Obstacle-Layout-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -420,6 +420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09c98ed2a560fa47bfce98fd414d149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfObstacles:
+  - {fileID: 2818158179831843662}
+  - {fileID: 8216937918765771333, guid: 9bbe807529355a040b41e18050f63789, type: 3}
+  - {fileID: 8216937918765771333, guid: 0b7b3983499dbe04494731390728eb50, type: 3}
 --- !u!1001 &6277480753154965044
 PrefabInstance:
   m_ObjectHideFlags: 0

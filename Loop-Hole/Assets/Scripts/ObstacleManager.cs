@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    public List<GameObject> listOfObstacles;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class ObstacleManager : MonoBehaviour
         
         if (transform.position.y > topBorder.y)
         {
-            ResetPosition();
+            ChangeObsLayout();
         }
     }
 
@@ -34,12 +35,20 @@ public class ObstacleManager : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10));
     }
     
+
     private void ResetPosition()
     {
-        //float newXPos = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x + transform.localScale.x/2, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x - transform.localScale.x/2);
         float newYPos = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height * 2)).y);
         transform.position = new Vector3(transform.position.x, newYPos, 0);
-        // Debug.Log(ScreenToWorld(newXPos, newYPos));
-        //GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+
+    private void ChangeObsLayout()
+    {
+        int obsLayoutNum = Random.Range(0,listOfObstacles.Count);
+        GameObject nextObs = listOfObstacles[obsLayoutNum];
+
+        Instantiate(nextObs);
+        Destroy(this.gameObject);
     }
 }
