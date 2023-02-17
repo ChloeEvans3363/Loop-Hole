@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private float score;
     private float depth;
     private float iTime;
+    public bool dead = false;
 
 
 
@@ -97,6 +98,13 @@ public class GameManager : MonoBehaviour
 
         depth += fallSpeed * Time.deltaTime;
         //Debug.Log("Score: " + score);
+
+        //Death
+        if(health == 0)
+        {
+            Time.timeScale = 0;
+            dead = true;
+        }
     }
 
     /// <summary>

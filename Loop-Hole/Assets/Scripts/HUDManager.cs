@@ -7,6 +7,7 @@ public class HUDManager : MonoBehaviour
 {
     [SerializeField] private Text healthText;
     [SerializeField] private Text depthText;
+    [SerializeField] private Text gameOver;
     [SerializeField] private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -20,6 +21,11 @@ public class HUDManager : MonoBehaviour
     {
         SetHealthText(gameManager.Health);
         SetDepthText(Mathf.RoundToInt(gameManager.Depth));
+
+        if (gameManager.dead)
+        {
+            gameOver.gameObject.SetActive(true);
+        }
     }
 
     //Set the health text
