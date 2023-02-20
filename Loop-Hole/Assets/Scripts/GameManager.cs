@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     private float depth;
     private float iTime;
     public bool dead = false;
+    public GameObject tutorialManager;
+    public GameObject objectManager;
+    private float tutorialEndTime = 5.5f;
 
 
 
@@ -83,18 +86,25 @@ public class GameManager : MonoBehaviour
             {
                 fallSpeed += 2 * Time.deltaTime;
                 currentFallSpeed = fallSpeed;
-                //Debug.Log("bye");
             }
             else if (fallSpeed < currentFallSpeed)
             {
                 fallSpeed += 10 * Time.deltaTime;
-                //Debug.Log("hi");
             }
             score += (fallSpeed + Time.deltaTime) / 1000;
             timeElapsed += Time.deltaTime;
             if (iTime > 0f)
             {
                 iTime -= Time.deltaTime;
+            }
+
+            if(stage == 3 && tutorialEndTime > 0)
+            {
+                tutorialEndTime -= Time.deltaTime;
+            }
+            else
+            {
+                tutorialText.gameObject.SetActive(false);
             }
         }
 
@@ -125,14 +135,14 @@ public class GameManager : MonoBehaviour
     private void Tutorial(int stage)
     {
         //fallSpeed = 2;
-        if(stage == 1)
-        {
-            Debug.Log("stage 1");
-        }
         if(stage == 2)
         {
-            tutorialText.text = "This is an enemy. You can jump on their head to get more points. But if you hit them on the side you will take damage";
-            Debug.Log("stage 2");
+            tutorialText.text = "You can jump on enemies heads to get more points. But if you hit them on the side you will take damage";
+        }
+        if(stage == 3)
+        {
+            tutorialText.text = "Alright, one last tip, you can hug the walls to slow down your speed! You're good to go! Good luck!";
+            tutorial = false;
         }
     }
 }

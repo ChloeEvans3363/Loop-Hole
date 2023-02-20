@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfObstacles:
   - {fileID: 2138389814541271264}
-  - {fileID: 2270771480540045166, guid: 6919f7e9da474f844a0f5587f5fed1f0, type: 3}
+  - {fileID: 6305973766567484409, guid: 3a7bf12cdd740754b92d03b4d5b6e155, type: 3}
 --- !u!1 &2138389814636641311
 GameObject:
   m_ObjectHideFlags: 0

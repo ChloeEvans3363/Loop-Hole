@@ -26,8 +26,12 @@ public class TutorialManager : MonoBehaviour
 
         if (transform.position.y > topBorder.y)
         {
-            //ChangeObsLayout(gameManager.GetComponent<GameManager>().stage - 1);
-            ChangeObsLayout(1);
+            ChangeObsLayout(gameManager.GetComponent<GameManager>().stage - 1);
+        }
+
+        if(gameManager.GetComponent<GameManager>().stage == 3)
+        {
+            transform.gameObject.SetActive(false);
         }
 
     }

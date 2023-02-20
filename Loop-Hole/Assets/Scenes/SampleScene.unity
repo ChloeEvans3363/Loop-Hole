@@ -638,7 +638,7 @@ PrefabInstance:
     - target: {fileID: -376252653705138069, guid: d0ca54fccee059e41841a3e6ac7f12cc, type: 3}
       propertyPath: listOfObstacles.Array.data[1]
       value: 
-      objectReference: {fileID: 2270771480540045166, guid: 6919f7e9da474f844a0f5587f5fed1f0, type: 3}
+      objectReference: {fileID: 6305973766567484409, guid: 3a7bf12cdd740754b92d03b4d5b6e155, type: 3}
     - target: {fileID: 1314999082261955930, guid: d0ca54fccee059e41841a3e6ac7f12cc, type: 3}
       propertyPath: m_RootOrder
       value: 1
