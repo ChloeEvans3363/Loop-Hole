@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class GameManager : MonoBehaviour
     public float currentFallSpeed;
     public int stage;
 
-    private bool tutorial = false;
+    private bool tutorial = true;
+    [SerializeField] private Text tutorialText;
 
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
     //Also why do the obstacles and walls have separate fall speeds? That doesn't make much sense.
@@ -113,7 +115,7 @@ public class GameManager : MonoBehaviour
     /// <param name="amt"></param>
     public void TakeDamage(int amt)
     {
-        if(iTime <= 0f && health != 0)
+        if(iTime <= 0f && health != 0 && !tutorial)
         {
             iTime = 0.5f;
             health -= amt;
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
         }
         if(stage == 2)
         {
+            tutorialText.text = "This is an enemy. You can jump on their head to get more points. But if you hit them on the side you will take damage";
             Debug.Log("stage 2");
         }
     }
