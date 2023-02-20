@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     private float depth;
     private float iTime;
     public bool dead = false;
-    public GameObject tutorialManager;
     public GameObject objectManager;
     private float tutorialEndTime = 5.5f;
 
@@ -98,14 +97,18 @@ public class GameManager : MonoBehaviour
                 iTime -= Time.deltaTime;
             }
 
-            if(stage == 3 && tutorialEndTime > 0)
+            if(stage == 3)
             {
+                if (tutorialEndTime <= 0)
+                {
+                    tutorialText.gameObject.SetActive(false);
+                    objectManager.SetActive(true);
+                    stage++;
+                    
+                }
                 tutorialEndTime -= Time.deltaTime;
             }
-            else
-            {
-                tutorialText.gameObject.SetActive(false);
-            }
+
         }
 
         depth += fallSpeed * Time.deltaTime;
@@ -134,7 +137,6 @@ public class GameManager : MonoBehaviour
 
     private void Tutorial(int stage)
     {
-        //fallSpeed = 2;
         if(stage == 2)
         {
             tutorialText.text = "You can jump on enemies heads to get more points. But if you hit them on the side you will take damage";
