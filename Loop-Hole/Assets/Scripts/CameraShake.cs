@@ -15,6 +15,7 @@ public class CameraShake : MonoBehaviour
     {
         xAnchor = transform.position.x;
         //StartCoroutine(Shake());
+        GameManager.OnDamage += StartShake;
     }
 
     public void StartShake()

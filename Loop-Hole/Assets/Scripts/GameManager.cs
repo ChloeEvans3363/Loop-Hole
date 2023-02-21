@@ -28,8 +28,9 @@ public class GameManager : MonoBehaviour
     public bool dead = false;
     public GameObject objectManager;
     private float tutorialEndTime = 5.5f;
-
-
+    //Events and delegates
+    public delegate void DamageAction();
+    public static event DamageAction OnDamage;
 
     public float Depth
     {
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
             iTime = 0.5f;
             health -= amt;
         }
+        OnDamage();
     }
 
     private void Tutorial(int stage)

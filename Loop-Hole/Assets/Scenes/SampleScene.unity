@@ -501,9 +501,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfdea0682a024b84592dc3db7ee278da, type: 3}
+  m_Script: {fileID: 11500000, guid: 97dc2252701014041a900c64205858ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 0
+  startingShakeSpeed: 50
+  magnitude: 0.25
+  numberOfShakes: 5
 --- !u!1 &700086187
 GameObject:
   m_ObjectHideFlags: 0
