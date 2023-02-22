@@ -148,6 +148,14 @@ public class GameManager : MonoBehaviour
         {
             iTime = 0.5f;
             health -= amt;
+            if(fallSpeed - 10 <= 0)
+            {
+                fallSpeed = 5;
+            }
+            else
+            {
+                fallSpeed -= 10;
+            }
         }
         OnDamage();
     }
