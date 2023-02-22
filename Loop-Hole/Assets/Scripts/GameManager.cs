@@ -136,7 +136,6 @@ public class GameManager : MonoBehaviour
             dead = true;
         }
 
-        Debug.Log(stage);
     }
 
     /// <summary>
