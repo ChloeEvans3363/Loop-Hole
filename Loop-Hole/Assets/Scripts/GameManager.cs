@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public float currentFallSpeed;
     public int stage;
 
-    private bool tutorial = true;
+    [SerializeField] private bool tutorial;
     [SerializeField] private Text tutorialText;
 
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
@@ -71,6 +71,11 @@ public class GameManager : MonoBehaviour
         fallSpeed = 3;
         iTime = 0f;
         stage = 1;
+        if (!tutorial)
+        {
+            stage = 3;
+            tutorialEndTime = 0;
+        }
     }
 
     // Update is called once per frame
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
         if (tutorial)
         {
             Tutorial(stage);
+            Debug.Log("hecc");
         }
         else
         {
