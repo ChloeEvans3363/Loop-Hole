@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public float fallSpeed = 3;
+    public float fallSpeed = 5;
     public float fallIncrease = 0.8f;
     public float currentFallSpeed;
     public int stage;
@@ -17,11 +17,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text tutorialText;
 
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
-    //Also why do the obstacles and walls have separate fall speeds? That doesn't make much sense.
-    private float timeElapsed;
-    [SerializeField] private float initialFallSpeed;
-    [SerializeField] private float fallIncreaseRate;
-    [SerializeField] private float fallSpeedCap;
     private int coins;
     private int health;
     private float score;
@@ -70,7 +65,6 @@ public class GameManager : MonoBehaviour
     {
         health = 3;
         score = 0;
-        fallSpeed = 3;
         iTime = 0f;
         stage = 1;
         if (!tutorial)
@@ -97,7 +91,6 @@ public class GameManager : MonoBehaviour
         if (tutorial)
         {
             Tutorial(stage);
-            Debug.Log("hecc");
         }
         else
         {
@@ -111,13 +104,15 @@ public class GameManager : MonoBehaviour
                 fallSpeed += 10 * Time.deltaTime;
             }
             score += (fallSpeed + Time.deltaTime) / 1000;
-            timeElapsed += Time.deltaTime;
+            //timeElapsed += Time.deltaTime;
             if (iTime > 0f)
             {
                 iTime -= Time.deltaTime;
             }
 
-            if(stage == 3)
+            depth += fallSpeed * Time.deltaTime;
+
+            if (stage == 3)
             {
                 if (tutorialEndTime <= 0)
                 {
@@ -131,7 +126,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        depth += fallSpeed * Time.deltaTime;
+        
         //Debug.Log("Score: " + score);
 
         //Death
@@ -140,6 +135,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             dead = true;
         }
+
+        Debug.Log(stage);
     }
 
     /// <summary>
@@ -158,7 +155,7 @@ public class GameManager : MonoBehaviour
 
     private void Tutorial(int stage)
     {
-        if(stage == 2)
+        if (stage == 2)
         {
             tutorialText.text = "You can jump on enemies heads to get more points. But if you hit them on the side you will take damage";
         }

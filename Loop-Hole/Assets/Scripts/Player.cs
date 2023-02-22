@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameManager.GetComponent<GameManager>().dead)
+        if (Time.timeScale != 0)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             position = Vector2.Lerp(transform.position, new Vector2(mousePosition.x, transform.position.y), moveSpeed);
