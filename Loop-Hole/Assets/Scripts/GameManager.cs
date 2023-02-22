@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public float fallIncrease = 0.8f;
     public float currentFallSpeed;
     public int stage;
+    public bool isPaused = false;
+    public HUDManager hudScript;
 
     [SerializeField] private bool tutorial;
     [SerializeField] private Text tutorialText;
@@ -81,6 +83,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPaused)
+        {
+            hudScript.pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        else {
+            hudScript.pauseScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
+
         if (tutorial)
         {
             Tutorial(stage);

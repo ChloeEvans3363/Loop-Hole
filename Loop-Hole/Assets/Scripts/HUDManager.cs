@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class HUDManager : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Text depthText;
     [SerializeField] private Text gameOver;
     [SerializeField] private GameManager gameManager;
+    
+    public GameObject pauseScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,16 @@ public class HUDManager : MonoBehaviour
         {
             gameOver.gameObject.SetActive(true);
         }
+    }
+
+    public void Continue()
+    {
+        gameManager.isPaused = false;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 
     //Set the health text

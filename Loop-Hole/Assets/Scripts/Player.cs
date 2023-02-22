@@ -30,6 +30,10 @@ public class Player : MonoBehaviour
 
             transform.position = position;
         }
+    }
 
+    public void OnPause()
+    {
+        gameManager.isPaused = !gameManager.isPaused;
     }
 }
