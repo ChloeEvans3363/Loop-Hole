@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Text depthText;
     [SerializeField] private Text gameOver;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private List<Image> healthIcons;
     
     public GameObject pauseScreen;
 
@@ -25,6 +26,7 @@ public class HUDManager : MonoBehaviour
     {
         SetHealthText(gameManager.Health);
         SetDepthText(Mathf.RoundToInt(gameManager.Depth));
+        UpdateHealthIcons(gameManager.Health);
 
         if (gameManager.dead)
         {
@@ -52,5 +54,20 @@ public class HUDManager : MonoBehaviour
     public void SetDepthText(int num)
     {
         depthText.text = "Depth: " + num;
+    }
+
+    public void UpdateHealthIcons(int currentHealth)
+    {
+        for(int i = 0; i < healthIcons.Count; i++)
+        {
+            if(i < currentHealth)
+            {
+                healthIcons[i].color = Color.yellow;
+            } 
+            else
+            {
+                healthIcons[i].color = Color.gray;
+            }
+        }
     }
 }
