@@ -26,9 +26,8 @@ public class Player : MonoBehaviour
         if (Time.timeScale != 0)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            position = Vector2.Lerp(transform.position, new Vector2(mousePosition.x, transform.position.y), moveSpeed);
 
-            transform.position = position;
+            transform.position = new Vector2(mousePosition.x, transform.position.y);
         }
     }
 
