@@ -177,4 +177,9 @@ public class GameManager : MonoBehaviour
             tutorial = false;
         }
     }
+
+    public void UnloadAssistant()
+    {
+        OnDamage = null;
+    }
 }
