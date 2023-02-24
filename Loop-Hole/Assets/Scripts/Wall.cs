@@ -35,4 +35,13 @@ public class Wall : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, -20, 0);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player" && gameManager.previousFallSpeed <= gameManager.fallSpeed)
+        {
+            gameManager.fallSpeed = gameManager.fallSpeed / 10;
+        }
+        
+    }
 }

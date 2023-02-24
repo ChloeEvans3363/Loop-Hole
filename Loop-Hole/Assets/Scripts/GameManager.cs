@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public float fallSpeed = 5;
     public float fallIncrease = 0.8f;
     public float currentFallSpeed;
+    public float previousFallSpeed = 0;
     public int stage;
     public bool isPaused = false;
     public HUDManager hudScript;
@@ -102,6 +103,10 @@ public class GameManager : MonoBehaviour
             else if (fallSpeed < currentFallSpeed)
             {
                 fallSpeed += 10 * Time.deltaTime;
+            }
+            if (fallSpeed > previousFallSpeed)
+            {
+                previousFallSpeed = fallSpeed;
             }
             score += (fallSpeed + Time.deltaTime) / 1000;
             //timeElapsed += Time.deltaTime;
