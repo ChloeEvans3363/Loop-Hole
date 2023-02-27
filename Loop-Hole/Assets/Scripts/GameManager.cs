@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     private float depth;
     private float iTime;
     public bool dead = false;
-    public GameObject objectManager;
     private float tutorialEndTime = 5.5f;
     //Events and delegates
     public delegate void DamageAction();
@@ -122,14 +121,7 @@ public class GameManager : MonoBehaviour
 
             if (stage == 3)
             {
-                if (tutorialEndTime <= 0)
-                {
-                    tutorialText.gameObject.SetActive(false);
-                    objectManager.SetActive(true);
-                    stage++;
-                    
-                }
-                tutorialEndTime -= Time.deltaTime;
+                
             }
 
         }
@@ -177,7 +169,30 @@ public class GameManager : MonoBehaviour
         if(stage == 3)
         {
             tutorialText.text = "Alright, one last tip, you can hug the walls to slow down your speed! You're good to go! Good luck!";
-            tutorial = false;
+
+            if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
+            {
+                fallSpeed += 2 * Time.deltaTime;
+                currentFallSpeed = fallSpeed;
+            }
+            else if (fallSpeed < currentFallSpeed)
+            {
+                fallSpeed += 10 * Time.deltaTime;
+            }
+            if (fallSpeed > previousFallSpeed)
+            {
+                previousFallSpeed = fallSpeed;
+            }
+
+            if (tutorialEndTime <= 0)
+            {
+                tutorialText.gameObject.SetActive(false);
+                stage++;
+                // Switch stages
+                SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+                tutorial = false;
+            }
+            tutorialEndTime -= Time.deltaTime;
         }
     }
 
