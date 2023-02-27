@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class GameManager : MonoBehaviour
             stage = 3;
             tutorialEndTime = 0;
         }
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.sceneUnloaded += UnloadAssistant;
     }
 
     // Update is called once per frame
@@ -178,7 +181,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UnloadAssistant()
+    public void UnloadAssistant(Scene current)
     {
         OnDamage = null;
     }
