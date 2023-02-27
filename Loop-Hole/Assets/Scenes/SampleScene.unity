@@ -2480,7 +2480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
       propertyPath: tutorial
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
       propertyPath: fallSpeed
