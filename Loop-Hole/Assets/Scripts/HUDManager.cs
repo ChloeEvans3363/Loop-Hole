@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
-    [SerializeField] private Text healthText;
+    //[SerializeField] private Text healthText;
     [SerializeField] private Text depthText;
     [SerializeField] private Text gameOver;
     [SerializeField] private GameManager gameManager;
@@ -24,7 +24,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetHealthText(gameManager.Health);
+        //SetHealthText(gameManager.Health);
         SetDepthText(Mathf.RoundToInt(gameManager.Depth));
         UpdateHealthIcons(gameManager.Health);
 
@@ -45,10 +45,10 @@ public class HUDManager : MonoBehaviour
     }
 
     //Set the health text
-    public void SetHealthText(int num)
+    /*public void SetHealthText(int num)
     {
         healthText.text = "Health: " + num + "/3";
-    }
+    }*/
 
     //Set depth text
     public void SetDepthText(int num)
