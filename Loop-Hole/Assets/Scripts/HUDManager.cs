@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Text gameOver;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private List<Image> healthIcons;
+    private int score;
     
     public GameObject pauseScreen;
 
@@ -31,6 +32,9 @@ public class HUDManager : MonoBehaviour
         if (gameManager.dead)
         {
             gameOver.gameObject.SetActive(true);
+            gameOver.gameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = "Depth: " + score;
+            gameOver.gameObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Jem: " + score/10;
+            gameOver.gameObject.transform.GetChild(2).GetComponent<UnityEngine.UI.Text>().text = "High Score: ";
         }
     }
 
@@ -54,6 +58,7 @@ public class HUDManager : MonoBehaviour
     public void SetDepthText(int num)
     {
         depthText.text = "Depth: " + num;
+        score = num;
     }
 
     public void UpdateHealthIcons(int currentHealth)
