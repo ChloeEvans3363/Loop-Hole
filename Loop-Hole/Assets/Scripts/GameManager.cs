@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Player playerScript;
     public Sprite normalSprite;
     public Sprite damagedSprite;
+    public ParticleSystem particles;
 
     public float Depth
     {
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.sceneUnloaded += UnloadAssistant;
+        OnDamage += HitParticles;
     }
 
     // Update is called once per frame
@@ -244,6 +246,15 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (health < 3 && health > 0)
         {
             health++;
+        }
+    }
+
+    public void HitParticles()
+    {
+        if(particles != null)
+        {
+            particles.Clear();
+            particles.Play();
         }
     }
 }
