@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static GameManager gameManager;
+    public GameObject collectable;
 
     void Start()
     {
@@ -24,6 +25,8 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             gameManager.GetComponent<GameManager>().fallSpeed = -3f;
+            Instantiate(collectable);
+            collectable.transform.position = this.transform.position;
             Destroy(this.gameObject);
         }
     }

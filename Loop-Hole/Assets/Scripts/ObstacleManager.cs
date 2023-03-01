@@ -21,18 +21,13 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 topBorder = ScreenToWorld(0, Screen.height);
+        Vector3 topBorder = gameManager.ScreenToWorld(0, Screen.height);
         transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().fallSpeed);
         
         if (transform.position.y > topBorder.y)
         {
             ChangeObsLayout();
         }
-    }
-
-    private Vector3 ScreenToWorld(float x, float y)
-    {
-        return Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10));
     }
     
 

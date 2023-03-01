@@ -214,4 +214,16 @@ public class GameManager : MonoBehaviour
     {
         OnDamage = null;
     }
+
+    public Vector3 ScreenToWorld(float x, float y)
+    {
+        return Camera.main.ScreenToWorldPoint(new Vector3(x, y, 10));
+    }
+
+    public void Heal(){
+        if (health < 3 && health > 0)
+        {
+            health++;
+        }
+    }
 }
