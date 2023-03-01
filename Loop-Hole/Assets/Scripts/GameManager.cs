@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager Instance { get; private set; }
     public float fallSpeed = 5;
@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     private float iTime;
     public bool dead = false;
     private float tutorialEndTime = 5.5f;
+
+    private int highScore;
+    private int totalGems;
     //Events and delegates
     public delegate void DamageAction();
     public static event DamageAction OnDamage;
@@ -67,6 +70,18 @@ public class GameManager : MonoBehaviour
         {
             Instance = null;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.highScore = data.highScore;
+        this.totalGems = data.totalGems;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.highScore = this.highScore;
+        data.totalGems = this.totalGems;
     }
 
 
@@ -146,6 +161,11 @@ public class GameManager : MonoBehaviour
         if(health == 0)
         {
             Time.timeScale = 0;
+            if(depth > highScore)
+            {
+                highScore = Mathf.RoundToInt(depth);
+            }
+            totalGems += gems;
             dead = true;
         }
 
