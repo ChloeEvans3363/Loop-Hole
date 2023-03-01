@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     //Events and delegates
     public delegate void DamageAction();
     public static event DamageAction OnDamage;
+    public Player playerScript;
+    public Sprite normalSprite;
+    public Sprite damagedSprite;
 
     public float Depth
     {
@@ -116,6 +119,9 @@ public class GameManager : MonoBehaviour
             {
                 iTime -= Time.deltaTime;
             }
+            else{
+                playerScript.GetComponent<SpriteRenderer>().sprite = normalSprite;
+            }
 
             depth += fallSpeed * Time.deltaTime;
 
@@ -146,8 +152,9 @@ public class GameManager : MonoBehaviour
     {
         if(iTime <= 0f && health != 0 && !tutorial)
         {
-            iTime = 0.5f;
+            iTime = 1.5f;
             health -= amt;
+            playerScript.GetComponent<SpriteRenderer>().sprite = damagedSprite;
             if(fallSpeed - 10 <= 0)
             {
                 fallSpeed = 5;
@@ -156,8 +163,8 @@ public class GameManager : MonoBehaviour
             {
                 fallSpeed -= 10;
             }
+            OnDamage();
         }
-        OnDamage();
     }
 
     private void Tutorial(int stage)

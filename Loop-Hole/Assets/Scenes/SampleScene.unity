@@ -581,7 +581,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1374,6 +1374,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1647448933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5695277916567646502, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
+  m_PrefabInstance: {fileID: 5695277917093870027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e839a3951de2880449210f06db84757e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1683833052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2258,9 +2269,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1762618793}
     - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
+      propertyPath: normalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f2e4c032cd8204468b1848ab4a4c45d, type: 3}
+    - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 1647448933}
+    - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
       propertyPath: tutorialText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
+      propertyPath: damagedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cbe1cd78adf1ba47b22fbe23e8ae1bc, type: 3}
     - target: {fileID: 2211846993352270260, guid: 75c333f5474260a4885f52ec6ab58de6, type: 3}
       propertyPath: objectManager
       value: 
@@ -2332,11 +2355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695277916567646503, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5695277916567646503, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 2.77
       objectReference: {fileID: 0}
     - target: {fileID: 5695277916567646503, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2394,7 +2417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732941742793585067, guid: 4f3da53c7153e5e43a6a6b10195d51c6, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6732941742793585067, guid: 4f3da53c7153e5e43a6a6b10195d51c6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2450,11 +2473,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6732941742793585067, guid: 4f3da53c7153e5e43a6a6b10195d51c6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.99997
+      value: -0.000000059605
       objectReference: {fileID: 0}
     - target: {fileID: 6732941742793585067, guid: 4f3da53c7153e5e43a6a6b10195d51c6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 288.82
+      value: 304
       objectReference: {fileID: 0}
     - target: {fileID: 6732941742793585067, guid: 4f3da53c7153e5e43a6a6b10195d51c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
