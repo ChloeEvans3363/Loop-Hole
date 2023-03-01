@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private int health;
     private float score;
     private float depth;
+    private int gems;
     private float iTime;
     public bool dead = false;
     private float tutorialEndTime = 5.5f;
@@ -43,6 +44,12 @@ public class GameManager : MonoBehaviour
     {
         get { return health; }
         set { health = value; }
+    }
+
+    public int Gem
+    {
+        get { return gems; }
+        set { gems = value; }
     }
 
     //End of game score manager
