@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 317768297}
   - component: {fileID: 317768296}
   m_Layer: 5
-  m_Name: JemScore
+  m_Name: GemScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Jems:'
+  m_Text: 'Gems:'
 --- !u!222 &317768297
 CanvasRenderer:
   m_ObjectHideFlags: 0
