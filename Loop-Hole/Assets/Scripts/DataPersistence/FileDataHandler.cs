@@ -16,24 +16,26 @@ public class FileDataHandler
         this.dataFileName = dataFileName;
     }
 
-    /**
-    public GameData Load()
-    {
+    
 
-    }
-    **/
+    
 
     public void Save(GameData data)
     {
+        // Use Path.Combine to account for different OS's having different path separators
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
         try
         {
+            // Create the directory the file will be written to if it doesn't already exist
+            Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
+            // Serialize the C# game data object into Json
+            string dataToStore = JsonUtility.ToJson(data, true);
         }
         catch(Exception e)
         {
-            //Debug.LogError
+            Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + e);
         }
     }
 }

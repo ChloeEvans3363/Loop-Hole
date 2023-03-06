@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Sprite normalSprite;
     public Sprite damagedSprite;
     public ParticleSystem particles;
+    private float speedCap = 15;
 
     public float Depth
     {
@@ -124,7 +125,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         }
         else
         {
-            if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
+            if (fallSpeed < speedCap && fallSpeed >= currentFallSpeed)
             {
                 fallSpeed += 2 * Time.deltaTime;
                 currentFallSpeed = fallSpeed;
