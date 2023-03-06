@@ -57,6 +57,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
         set { gems = value; }
     }
 
+    public float SpeedCap
+    {
+        get { return speedCap; }
+        set { speedCap = value; }
+    }
+
     //End of game score manager
 
     void Awake()

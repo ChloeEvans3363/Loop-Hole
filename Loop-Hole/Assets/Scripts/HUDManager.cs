@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private Text gameOver;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private List<Image> healthIcons;
+    [SerializeField] private Image speedNeedle;
     private int score;
     
     public GameObject pauseScreen;
@@ -36,6 +37,8 @@ public class HUDManager : MonoBehaviour
             gameOver.gameObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Gem: " + score/10;
             gameOver.gameObject.transform.GetChild(2).GetComponent<UnityEngine.UI.Text>().text = "High Score: ";
         }
+
+        UpdateSpeedIcon();
     }
 
     public void Continue()
@@ -74,5 +77,15 @@ public class HUDManager : MonoBehaviour
                 healthIcons[i].color = Color.gray;
             }
         }
+    }
+
+    public void UpdateSpeedIcon()
+    {
+        float angle = 180f;
+        if (gameManager.fallSpeed > 0f)
+        {
+            angle = 180f - gameManager.fallSpeed / gameManager.SpeedCap * 180f;
+        }
+        speedNeedle.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
