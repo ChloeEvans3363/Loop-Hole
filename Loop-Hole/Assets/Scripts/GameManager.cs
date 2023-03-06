@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
         set { gems = value; }
     }
 
+    public int HighScore
+    {
+        get { return highScore; }
+    }
+
     public float SpeedCap
     {
         get { return speedCap; }
