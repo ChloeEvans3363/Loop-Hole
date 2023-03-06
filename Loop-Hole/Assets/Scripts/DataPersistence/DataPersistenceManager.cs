@@ -48,6 +48,8 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
+
+        Debug.Log(gameData.highScore);
     }
 
     private void OnApplicationQuit()
