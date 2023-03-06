@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         this.highScore = data.highScore;
         this.totalGems = data.totalGems;
+
     }
 
     public void SaveData(ref GameData data)
@@ -179,7 +180,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
             {
                 highScore = Mathf.RoundToInt(depth);
             }
-            totalGems += gems;
+            if (!dead)
+            {
+                gems = (int)score / 100;
+                totalGems += gems;
+            }
             dead = true;
         }
 

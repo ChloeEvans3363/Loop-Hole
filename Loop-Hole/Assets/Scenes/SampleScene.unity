@@ -711,8 +711,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7, y: -239}
-  m_SizeDelta: {x: 182.0759, y: 45.1772}
+  m_AnchoredPosition: {x: 203.88, y: -239}
+  m_SizeDelta: {x: 575.84, y: 45.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &414025534
 MonoBehaviour:
@@ -1282,6 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.game
+  useEncryption: 1
 --- !u!4 &894864343
 Transform:
   m_ObjectHideFlags: 0
