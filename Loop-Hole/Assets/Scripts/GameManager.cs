@@ -182,8 +182,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
             }
             if (!dead)
             {
-                gems = (int)score / 100;
+                gems = Mathf.RoundToInt(depth) / 100;
                 totalGems += gems;
+                DataPersistenceManager.instance.SaveGame();
             }
             dead = true;
         }
