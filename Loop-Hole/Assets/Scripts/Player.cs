@@ -6,9 +6,8 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public static GameManager gameManager;
-    Vector3 mousePosition;
+    public Vector3 mousePosition;
     public float moveSpeed = 0.1f;
-    Vector2 position = new Vector2(0f, 0f);
 
     // Start is called before the first frame update
 

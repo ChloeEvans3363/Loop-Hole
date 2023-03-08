@@ -33,7 +33,7 @@ public class ObstacleManager : MonoBehaviour
 
     private void ResetPosition()
     {
-        float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height * 1.75f)).y;
+        float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height * 1.5f)).y;
         transform.position = new Vector3(transform.position.x, newYPos, 0);
     }
 
