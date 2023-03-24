@@ -14,7 +14,8 @@ public class Boundaries : MonoBehaviour
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         playerWidth = transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
-        wallWidth = wall.transform.GetComponent<SpriteRenderer>().bounds.size.x;
+        //wallWidth = wall.transform.GetComponent<SpriteRenderer>().bounds.size.x;
+        wallWidth = 1.125f;
     }
 
     private void LateUpdate()
