@@ -14,7 +14,7 @@ public class Collectable : MonoBehaviour
         {
             gameManager = FindObjectOfType<GameManager>();
         }
-        spawnPos = RandomVector3(Random.Range(0,180), 3.14159f);
+        spawnPos = RandomVector3(Random.Range(0,180), 0);
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class Collectable : MonoBehaviour
     {
         Vector3 topBorder = gameManager.ScreenToWorld(0, Screen.height);
    
-        transform.position += (spawnPos - transform.position).normalized * 3 * Time.deltaTime;
+        transform.position -= (spawnPos - transform.position).normalized * 3 * Time.deltaTime;
         transform.Translate(Vector3.up * Time.deltaTime * gameManager.GetComponent<GameManager>().fallSpeed);
 
         spawnTimer -= Time.deltaTime;
