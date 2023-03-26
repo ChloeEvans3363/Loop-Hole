@@ -122,7 +122,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.sceneUnloaded += UnloadAssistant;
         OnDamage += HitParticles;
-        Debug.Log(audioManager);
     }
 
     // Update is called once per frame
@@ -195,6 +194,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
                 DataPersistenceManager.instance.SaveGame();
             }
             dead = true;
+            audioManager.Pause("Theme");
         }
 
     }
