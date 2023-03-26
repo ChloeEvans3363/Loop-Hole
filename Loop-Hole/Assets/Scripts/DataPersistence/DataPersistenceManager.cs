@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -27,15 +28,40 @@ public class DataPersistenceManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //Debug.Log("OnSceneLoaded Called");
         this.dataPersistencesObjects = FindAllDataPersistenceObjects();
 
         // Temporary to test out if the save function works
         LoadGame();
+    }
+
+    public void OnSceneUnloaded(Scene scene)
+    {
+        //Debug.Log("OnSceneUnloaded Called");
+        //SaveGame();
+    }
+
+    private void Start()
+    {
+
     }
 
     public void LoadGame()
@@ -69,7 +95,7 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         // Temporary to test out if the save function works
-        SaveGame();
+        //SaveGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
