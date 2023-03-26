@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public static GameManager Instance { get; private set; }
+    public static AudioManager audioManager;
     public float fallSpeed = 5;
     public float fallIncrease = 0.8f;
     public float currentFallSpeed;
@@ -112,9 +113,16 @@ public class GameManager : MonoBehaviour, IDataPersistence
             stage = 3;
             tutorialEndTime = 0;
         }
+
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.sceneUnloaded += UnloadAssistant;
         OnDamage += HitParticles;
+        Debug.Log(audioManager);
     }
 
     // Update is called once per frame
@@ -210,6 +218,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
             {
                 fallSpeed -= 10;
             }
+            audioManager.Play("Hit");
+            audioManager.Play("Pain");
             OnDamage();
         }
     }

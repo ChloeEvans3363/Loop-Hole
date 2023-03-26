@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public static GameManager gameManager;
+    public static AudioManager audioManager;
     public Vector3 spawnPos;
     public float spawnTimer = 0.5f;
 
@@ -14,6 +15,12 @@ public class Collectable : MonoBehaviour
         {
             gameManager = FindObjectOfType<GameManager>();
         }
+
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         spawnPos = RandomVector3(Random.Range(0,180), 0);
     }
 
@@ -40,6 +47,7 @@ public class Collectable : MonoBehaviour
             gameManager.Heal();
             Debug.Log("Heal");
             Destroy(this.gameObject);
+            audioManager.Play("Pickup");
         }
     }
 
