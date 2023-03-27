@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public static GameManager gameManager;
     public Vector3 mousePosition;
     public float moveSpeed = 0.1f;
+    private Vector3 spriteSize;
 
     // Start is called before the first frame update
 
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
         {
             gameManager = FindObjectOfType<GameManager>();
         }
+
+        spriteSize = transform.localScale;
     }
 
     // Update is called once per frame
@@ -26,8 +29,18 @@ public class Player : MonoBehaviour
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
+            if ((int)mousePosition.x > (int)transform.position.x)
+            {
+                gameObject.transform.localScale = new Vector3(-spriteSize.x, spriteSize.y, spriteSize.z);
+            }
+            else if ((int)mousePosition.x < (int)transform.position.x)
+            {
+                gameObject.transform.localScale = new Vector3(spriteSize.x, spriteSize.y, spriteSize.z);
+            }
+
             transform.position = new Vector2(mousePosition.x, transform.position.y);
         }
+
     }
 
     public void OnPause()
