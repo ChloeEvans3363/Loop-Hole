@@ -33,7 +33,7 @@ public class Wall : MonoBehaviour
 
     private void ResetPosition()
     {
-        transform.position = new Vector3(transform.position.x, -20, 0);
+        transform.position = new Vector3(transform.position.x, -33, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
