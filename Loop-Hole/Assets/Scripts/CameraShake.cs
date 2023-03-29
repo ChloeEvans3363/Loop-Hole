@@ -38,7 +38,7 @@ public class CameraShake : MonoBehaviour
             offsetSource += shakeSpeed * Time.deltaTime;
             //Set the x position
             float x = xAnchor + Mathf.Sin(offsetSource) * magnitude;
-            transform.position = new Vector3(x, 0f, transform.position.z);
+            transform.position = new Vector3(x, transform.position.y, transform.position.z);
             yield return null;
         }
     }
