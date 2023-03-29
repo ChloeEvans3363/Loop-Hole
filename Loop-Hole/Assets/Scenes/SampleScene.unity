@@ -3577,6 +3577,14 @@ PrefabInstance:
       propertyPath: wall
       value: 
       objectReference: {fileID: 700086187}
+    - target: {fileID: 598051062, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
+      propertyPath: wallLeft
+      value: 
+      objectReference: {fileID: 700086187}
+    - target: {fileID: 598051062, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
+      propertyPath: wallRight
+      value: 
+      objectReference: {fileID: 1077873897}
     - target: {fileID: 5695277916567646497, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
       propertyPath: m_Name
       value: Player
