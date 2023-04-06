@@ -66,7 +66,7 @@ public class InputManager : MonoBehaviour
     private void StartTouchPrimary(InputAction.CallbackContext context)
     {
         touching = true;
-        startPosition = PrimaryPosition();
+        startPosition = Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
         //Debug.Log("start:" + Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()));
         //if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
     }
@@ -81,10 +81,7 @@ public class InputManager : MonoBehaviour
 
     public Vector2 PrimaryPosition()
     {
-        if (touching)
-            return Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
-        else
-            return endPosition;
+        return Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
     }
 
 }

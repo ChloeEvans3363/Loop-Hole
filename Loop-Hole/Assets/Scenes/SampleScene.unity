@@ -1464,11 +1464,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545307115}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57591c968334dfe45852e2f8580ad848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumDistance: 0.2
+  maximumTime: 1
   directionThreshold: 0.9
 --- !u!1001 &556297446
 PrefabInstance:

@@ -73,9 +73,11 @@ public class Player : MonoBehaviour
             {
                 change = inputManager.StartPosition.x - inputManager.PrimaryPosition().x;
             }
-            Debug.Log(inputManager.StartPosition.x + "+" + inputManager.PrimaryPosition().x);
-            Debug.Log("=" + change);
-            transform.position = new Vector2(startPosition.x - change, transform.position.y);
+            //Debug.Log("start " + startPosition);
+            //Debug.Log(startPosition.x - change);
+            //Debug.Log(inputManager.StartPosition.x + "+" + inputManager.PrimaryPosition().x + "=" + (inputManager.StartPosition.x - inputManager.PrimaryPosition().x));
+            //Debug.Log("=" + change);
+            transform.position = new Vector2(inputManager.StartPosition.x, transform.position.y);
         }
 
     }
