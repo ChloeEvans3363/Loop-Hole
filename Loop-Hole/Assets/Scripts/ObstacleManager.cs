@@ -6,6 +6,7 @@ public class ObstacleManager : MonoBehaviour
 {
     public static GameManager gameManager;
     public List<GameObject> listOfObstacles;
+    public bool secondObstacle = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +34,17 @@ public class ObstacleManager : MonoBehaviour
 
     private void ResetPosition()
     {
-        float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height / 2)).y;
-        transform.position = new Vector3(transform.position.x, newYPos, 0);
+        if (secondObstacle)
+        {
+            float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height)).y;
+            transform.position = new Vector3(transform.position.x, newYPos, 0);
+        }
+
+        else
+        {
+            float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height / 2)).y;
+            transform.position = new Vector3(transform.position.x, newYPos, 0);
+        }
     }
 
 
@@ -42,6 +52,11 @@ public class ObstacleManager : MonoBehaviour
     {
         int obsLayoutNum = Random.Range(0,listOfObstacles.Count);
         GameObject nextObs = listOfObstacles[obsLayoutNum];
+
+        if (secondObstacle)
+        {
+            nextObs.GetComponent<ObstacleManager>().secondObstacle = true;
+        }
 
         Instantiate(nextObs);
         Destroy(this.gameObject);
