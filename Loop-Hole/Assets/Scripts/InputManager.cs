@@ -12,6 +12,35 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
     private Camera mainCamera;
 
+    private Vector2 startPosition;
+    private Vector2 endPosition;
+
+    bool touching = false;
+
+    public Vector2 StartPosition
+    {
+        get
+        {
+            return startPosition;
+        }
+    }
+
+    public Vector2 EndPosition
+    {
+        get
+        {
+            return endPosition;
+        }
+    }
+
+    public bool Touching
+    {
+        get
+        {
+            return touching;
+        }
+    }
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -36,22 +65,26 @@ public class InputManager : MonoBehaviour
 
     private void StartTouchPrimary(InputAction.CallbackContext context)
     {
-        if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
+        touching = true;
+        startPosition = PrimaryPosition();
+        //Debug.Log("start:" + Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()));
+        //if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
     }
 
     private void EndTouchPrimary(InputAction.CallbackContext context)
     {
-        if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
+        endPosition = PrimaryPosition();
+        touching = false;
+        //Debug.Log("end:" +  Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()));
+        //if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
     }
 
     public Vector2 PrimaryPosition()
     {
-        return Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
-    }
-
-    private void Update()
-    {
-        Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
+        if (touching)
+            return Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
+        else
+            return endPosition;
     }
 
 }
