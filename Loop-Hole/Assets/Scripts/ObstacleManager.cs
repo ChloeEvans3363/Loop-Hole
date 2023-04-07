@@ -36,7 +36,7 @@ public class ObstacleManager : MonoBehaviour
     {
         if (secondObstacle)
         {
-            float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height)).y;
+            float newYPos = Camera.main.ScreenToWorldPoint(new Vector2(0, -Screen.height * 1.1f)).y;
             transform.position = new Vector3(transform.position.x, newYPos, 0);
         }
 
