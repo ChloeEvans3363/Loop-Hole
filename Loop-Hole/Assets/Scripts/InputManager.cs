@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     public delegate void StartTouch(Vector2 position, float time);
     public event StartTouch OnStartTouch;
     public delegate void EndTouch(Vector2 position, float time);
-    public event StartTouch OnEndTouch;
+    public event EndTouch OnEndTouch;
 
     public PlayerInput playerInput;
     private Camera mainCamera;
@@ -66,18 +66,17 @@ public class InputManager : MonoBehaviour
 
     private void StartTouchPrimary(InputAction.CallbackContext context)
     {
+        Debug.Log("press");
         touching = true;
         startPosition = Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>());
-        //Debug.Log("start:" + Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()));
-        //if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
+        if (OnStartTouch != null) OnStartTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.startTime);
     }
 
     private void EndTouchPrimary(InputAction.CallbackContext context)
     {
         endPosition = PrimaryPosition();
         touching = false;
-        //Debug.Log("end:" +  Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()));
-        //if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
+        if (OnEndTouch != null) OnEndTouch(Utils.ScreenToWorld(mainCamera, playerInput.Touch.PrimaryPosition.ReadValue<Vector2>()), (float)context.time);
     }
 
     public Vector2 PrimaryPosition()

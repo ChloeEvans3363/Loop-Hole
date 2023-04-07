@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     //Mobile stuff
     private Vector2 startPosition;
+    private Vector2 fingerStartPos;
 
     // Start is called before the first frame update
 
@@ -38,6 +39,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inputManager.playerInput.Touch.PrimaryContact.triggered && inputManager.playerInput.Touch.PrimaryContact.ReadValue<float>() == 1)
+        {
+            //Debug.Log("press");
+            fingerStartPos = inputManager.PrimaryPosition();
+        }
 
         if (Time.timeScale != 0)
         {
@@ -57,26 +63,16 @@ public class Player : MonoBehaviour
             */
 
             // Testing mobile movement
-            //Debug.Log(inputManager.StartPosition);
-            //Debug.Log(inputManager.PrimaryPosition());
-            //Debug.Log(transform.position.x);
-            //transform.position = new Vector2(inputManager.PrimaryPosition().x, transform.position.y);
-            //Debug.Log(transform.position.x + (inputManager.StartPosition.x - inputManager.PrimaryPosition().x));
             float change = 0;
-            //Debug.Log("huh " + transform.position);
             if (!inputManager.Touching)
             {
-                //Debug.Log("change " + transform.position);
                 startPosition = transform.position;
             }
             else
             {
-                change = inputManager.StartPosition.x - inputManager.PrimaryPosition().x;
+                change = fingerStartPos.x - inputManager.PrimaryPosition().x;
             }
-            //Debug.Log("start " + startPosition);
-            //Debug.Log(startPosition.x - change);
-            //Debug.Log(inputManager.StartPosition.x + "+" + inputManager.PrimaryPosition().x + "=" + (inputManager.StartPosition.x - inputManager.PrimaryPosition().x));
-            //Debug.Log("=" + change);
+
             transform.position = new Vector2(startPosition.x - change, transform.position.y);
         }
 
