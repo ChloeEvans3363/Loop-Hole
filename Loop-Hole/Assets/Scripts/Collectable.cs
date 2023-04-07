@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Collectable : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class Collectable : MonoBehaviour
     public static AudioManager audioManager;
     public Vector3 spawnPos;
     public float spawnTimer = 0.5f;
+    // public TextMeshPro scoreText;
 
     void Start()
     {
@@ -44,6 +47,11 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && spawnTimer <= 0)
         {
+            if (gameManager.Health == 3)
+            {
+                gameManager.Depth += 50;
+                // scoreText.enabled = true;              
+            }
             gameManager.Heal();
             Debug.Log("Heal");
             Destroy(this.gameObject);
