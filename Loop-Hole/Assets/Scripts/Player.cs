@@ -10,9 +10,9 @@ public class Player : MonoBehaviour
 
     public static GameManager gameManager;
     public static InputManager inputManager;
-    public Vector3 mousePosition;
     public float moveSpeed = 0.1f;
     private Vector3 spriteSize;
+    private Vector2 controlPosition;
 
     //Mobile stuff
     private Vector2 startPosition;
@@ -47,33 +47,41 @@ public class Player : MonoBehaviour
 
         if (Time.timeScale != 0)
         {
-            /*
-            mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-            if ((int)mousePosition.x > (int)transform.position.x)
+            if (Mouse.current != null)
+            {
+                controlPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            }
+            else
+            {
+                float change = 0;
+                if (!inputManager.Touching)
+                {
+                    startPosition = transform.position;
+                }
+                else
+                {
+                    change = fingerStartPos.x - inputManager.PrimaryPosition().x;
+                }
+                controlPosition = new Vector2(startPosition.x - change, transform.position.y);
+            }
+            
+
+            if ((int)controlPosition.x > (int)transform.position.x)
             {
                 gameObject.transform.localScale = new Vector3(-spriteSize.x, spriteSize.y, spriteSize.z);
             }
-            else if ((int)mousePosition.x < (int)transform.position.x)
+            else if ((int)controlPosition.x < (int)transform.position.x)
             {
                 gameObject.transform.localScale = new Vector3(spriteSize.x, spriteSize.y, spriteSize.z);
             }
 
-            transform.position = new Vector2(mousePosition.x, transform.position.y);
-            */
+            transform.position = new Vector2(controlPosition.x, transform.position.y);
+            
 
             // Testing mobile movement
-            float change = 0;
-            if (!inputManager.Touching)
-            {
-                startPosition = transform.position;
-            }
-            else
-            {
-                change = fingerStartPos.x - inputManager.PrimaryPosition().x;
-            }
 
-            transform.position = new Vector2(startPosition.x - change, transform.position.y);
+            transform.position = new Vector2(controlPosition.x, transform.position.y);
         }
 
     }
