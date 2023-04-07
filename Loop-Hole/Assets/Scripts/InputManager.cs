@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1)]
 public class InputManager : MonoBehaviour
 {
 
@@ -9,7 +10,7 @@ public class InputManager : MonoBehaviour
     public delegate void EndTouch(Vector2 position, float time);
     public event StartTouch OnEndTouch;
 
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private Camera mainCamera;
 
     private Vector2 startPosition;
