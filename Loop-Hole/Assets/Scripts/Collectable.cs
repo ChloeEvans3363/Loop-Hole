@@ -10,7 +10,6 @@ public class Collectable : MonoBehaviour
     public static AudioManager audioManager;
     public Vector3 spawnPos;
     public float spawnTimer = 0.5f;
-    // public TextMeshPro scoreText;
 
     void Start()
     {
@@ -49,8 +48,7 @@ public class Collectable : MonoBehaviour
         {
             if (gameManager.Health == 3)
             {
-                gameManager.Depth += 50;
-                // scoreText.enabled = true;              
+                gameManager.Depth += 50;             
             }
             gameManager.Heal();
             Debug.Log("Heal");
