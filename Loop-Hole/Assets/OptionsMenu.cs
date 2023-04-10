@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private Slider masterVolume;
+    [SerializeField] private Slider sfxVolume;
+    [SerializeField] private Slider musicVolume;
+    [SerializeField] private Toggle screenshakeToggle;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.GetInt("screenshakeEnabled") != 0)
+            screenshakeToggle.isOn = true;
+        else 
+            screenshakeToggle.isOn = false;
+
+        sfxVolume.value = PlayerPrefs.GetFloat("sfxVolume");
+        musicVolume.value = PlayerPrefs.GetFloat("musicVolume");
+        masterVolume.value = PlayerPrefs.GetFloat("masterVolume");
     }
 
     // Update is called once per frame

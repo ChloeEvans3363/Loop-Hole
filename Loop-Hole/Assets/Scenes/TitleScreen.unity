@@ -531,6 +531,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPanel: {fileID: 23640337}
   optionsPanel: {fileID: 520257616}
+  masterVolume: {fileID: 1975842822}
+  sfxVolume: {fileID: 608034914}
+  musicVolume: {fileID: 1621737666}
+  screenshakeToggle: {fileID: 1650672405}
 --- !u!1001 &45789212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2733,7 +2737,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.8396226, g: 0.76353806, b: 0.69440484, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

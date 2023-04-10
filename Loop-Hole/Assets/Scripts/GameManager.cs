@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Sprite normalSprite;
     public Sprite damagedSprite;
     public ParticleSystem particles;
-    private float speedCap = 20;
+    private float speedCap = 28;
 
     public float Depth
     {
