@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public static GameManager gameManager;
-
+    [SerializeField] private bool move;
 
     void Start()
     {
@@ -17,7 +17,10 @@ public class Obstacle : MonoBehaviour
 
     void Update()
     {
-        
+        if (move)
+        {
+            Move();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,5 +29,10 @@ public class Obstacle : MonoBehaviour
         {
             gameManager.GetComponent<GameManager>().TakeDamage(1);
         }
+    }
+
+    private void Move()
+    {
+
     }
 }
