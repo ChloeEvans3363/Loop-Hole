@@ -43,7 +43,7 @@ public class WallManager : MonoBehaviour
                 //I should absolutely be using math for this instead
                 //it should always be 0 if i = topWall
                 int wallOffsetMultiplier = wallOffsets[i, topWall];
-                Debug.Log(i + ", " + wallList.Count + ", " + topWall + " = " + wallOffsetMultiplier);
+                //Debug.Log(i + ", " + wallList.Count + ", " + topWall + " = " + wallOffsetMultiplier);
                 wallList[i].transform.position = new Vector2(wallList[i].transform.position.x, wallList[topWall].transform.position.y - wallHeight * wallOffsetMultiplier); 
             }
             else
