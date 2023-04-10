@@ -120,12 +120,13 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
         if (audioManager == null)
         {
-            audioManager = FindObjectOfType<AudioManager>();
+            audioManager = AudioManager.Instance;
         }
 
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.sceneUnloaded += UnloadAssistant;
         OnDamage += HitParticles;
+        audioManager.Play("Theme");
     }
 
     // Update is called once per frame
