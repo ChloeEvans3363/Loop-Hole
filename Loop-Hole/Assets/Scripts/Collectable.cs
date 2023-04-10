@@ -47,7 +47,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && spawnTimer <= 0)
         {
-            if (gameManager.Health == 3)
+            if (gameManager.Health == 3 && !gameManager.tutorial)
             {
                 gameManager.Depth += 50;
                 // scoreText.enabled = true;              
