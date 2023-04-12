@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     /// <param name="amt"></param>
     public void TakeDamage(int amt)
     {
-        /*
+        
         if(iTime <= 0f && health != 0 && !tutorial)
         {
             iTime = 1.5f;
@@ -224,7 +224,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
             audioManager.Play("Pain");
             OnDamage();
         }
-        */
         
     }
 
