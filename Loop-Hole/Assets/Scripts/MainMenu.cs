@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public string sceneToLoad;
     public static AudioManager audioManager;
+    public GameObject howToPlayPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +32,9 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit();
+    }
+
+    public void ToggleHowToPlay(){
+        howToPlayPanel.SetActive(!howToPlayPanel.active);
     }
 }
