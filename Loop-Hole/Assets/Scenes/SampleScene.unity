@@ -951,7 +951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: SampleScene
-  howToPlayPanel: {fileID: 0}
 --- !u!114 &262219714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3525,7 +3524,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5695277916567646502, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
   m_PrefabInstance: {fileID: 5695277917093870027}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1921987008}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e839a3951de2880449210f06db84757e, type: 3}
@@ -4342,6 +4341,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6732941742793585067, guid: 4f3da53c7153e5e43a6a6b10195d51c6, type: 3}
   m_PrefabInstance: {fileID: 6732941743612652882}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1921987008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5695277916567646497, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
+  m_PrefabInstance: {fileID: 5695277917093870027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1921987010
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921987008}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 678bfa18cf245724f8e82bfcf121b5ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1939435418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,6 +5031,10 @@ PrefabInstance:
       propertyPath: wallRight
       value: 
       objectReference: {fileID: 1077873897}
+    - target: {fileID: 5695277916567646496, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f2e4c032cd8204468b1848ab4a4c45d, type: 3}
     - target: {fileID: 5695277916567646497, guid: 0d92cfed6c5f0ac40ac8b31880ec99e8, type: 3}
       propertyPath: m_Name
       value: Player
