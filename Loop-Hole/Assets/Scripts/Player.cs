@@ -77,11 +77,7 @@ public class Player : MonoBehaviour
             }
 
             transform.position = new Vector2(controlPosition.x, transform.position.y);
-            
 
-            // Testing mobile movement
-
-            transform.position = new Vector2(controlPosition.x, transform.position.y);
         }
 
     }
