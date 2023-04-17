@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     //Mobile stuff
     private Vector2 startPosition;
     private Vector2 fingerStartPos;
+    private Vector2 position;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
 
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
 
         spriteSize = transform.localScale;
         startPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -71,9 +74,15 @@ public class Player : MonoBehaviour
                 gameObject.transform.localScale = new Vector3(spriteSize.x, spriteSize.y, spriteSize.z);
             }
 
-            transform.position = new Vector2(controlPosition.x, transform.position.y);
+            //transform.position = new Vector2(controlPosition.x, transform.position.y);
+            position = Vector2.Lerp(transform.position, controlPosition, 0.1f);
         }
 
+    }
+
+    private void FixedUpdate()
+    {
+        rb.MovePosition(position);
     }
 
     public void OnPause()
