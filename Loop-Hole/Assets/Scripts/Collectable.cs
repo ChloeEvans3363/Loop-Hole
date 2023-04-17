@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Collectable : MonoBehaviour
 {
@@ -44,6 +46,10 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && spawnTimer <= 0)
         {
+            if (gameManager.Health == 3 && !gameManager.tutorial)
+            {
+                gameManager.Depth += 50;             
+            }
             gameManager.Heal();
             Debug.Log("Heal");
             Destroy(this.gameObject);

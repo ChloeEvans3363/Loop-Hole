@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool isPaused = false;
     public HUDManager hudScript;
 
-    [SerializeField] private bool tutorial;
+    public bool tutorial;
     [SerializeField] private Text tutorialText;
 
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public Sprite normalSprite;
     public Sprite damagedSprite;
     public ParticleSystem particles;
-    private float speedCap = 20;
+    private float speedCap = 28;
+    public GameObject leftWall;
 
     public float Depth
     {
@@ -113,15 +114,20 @@ public class GameManager : MonoBehaviour, IDataPersistence
             stage = 3;
             tutorialEndTime = 0;
         }
+        else
+        {
+            fallSpeed = 10;
+        }
 
         if (audioManager == null)
         {
-            audioManager = FindObjectOfType<AudioManager>();
+            audioManager = AudioManager.Instance;
         }
 
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.sceneUnloaded += UnloadAssistant;
         OnDamage += HitParticles;
+        audioManager.Play("Theme");
     }
 
     // Update is called once per frame
@@ -168,11 +174,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
             }
 
             depth += fallSpeed * Time.deltaTime;
-
-            if (stage == 3)
-            {
-                
-            }
 
         }
 
@@ -230,11 +231,11 @@ public class GameManager : MonoBehaviour, IDataPersistence
     {
         if (stage == 2)
         {
-            tutorialText.text = "You can jump on enemies heads to get more points. But if you hit them on the side you will take damage";
+            tutorialText.text = "You can jump on these hearts in order to clear them off!";
         }
         if(stage == 3)
         {
-            tutorialText.text = "Alright, one last tip, you can hug the walls to slow down your speed! You're good to go! Good luck!";
+            tutorialText.text = "Now that they're clean, you can pick them up!";
 
             if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
             {

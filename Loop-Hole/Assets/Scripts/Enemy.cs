@@ -12,12 +12,12 @@ public class Enemy : MonoBehaviour
     {
         if (gameManager == null)
         {
-            gameManager = FindObjectOfType<GameManager>();
+            gameManager = GameManager.Instance;
         }
 
         if (audioManager == null)
         {
-            audioManager = FindObjectOfType<AudioManager>();
+            audioManager = AudioManager.Instance;
         }
     }
 

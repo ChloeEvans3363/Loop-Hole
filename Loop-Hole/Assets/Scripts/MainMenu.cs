@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public string sceneToLoad;
     public static AudioManager audioManager;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,6 @@ public class MainMenu : MonoBehaviour
     public void OpenScene() {
         SceneManager.LoadScene(sceneToLoad);
         audioManager.Pause("Menu");
-        audioManager.Play("Theme");
     }
 
     public void QuitGame() {
