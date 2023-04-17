@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
 
             if (isPaused)
             {
-                position = Vector2.Lerp(transform.position, position, 0.1f);
+                position = Vector2.Lerp(transform.position, position, 0.05f);
                 if((int)controlPosition.x == (int)transform.position.x)
                 {
                     isPaused = false;
