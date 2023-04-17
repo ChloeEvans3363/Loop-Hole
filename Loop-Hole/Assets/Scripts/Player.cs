@@ -13,10 +13,9 @@ public class Player : MonoBehaviour
     public float moveSpeed = 0.1f;
     private Vector3 spriteSize;
     private Vector2 controlPosition;
-
-    //Mobile stuff
-    private Vector2 startPosition;
-    private Vector2 fingerStartPos;
+    private Vector2 position;
+    private Rigidbody2D rb;
+    private bool isPaused;
 
     // Start is called before the first frame update
 
@@ -33,17 +32,13 @@ public class Player : MonoBehaviour
         }
 
         spriteSize = transform.localScale;
-        startPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
+        isPaused = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (inputManager.playerInput.Touch.PrimaryContact.triggered && inputManager.playerInput.Touch.PrimaryContact.ReadValue<float>() == 1)
-        {
-            //Debug.Log("press");
-            fingerStartPos = inputManager.PrimaryPosition();
-        }
 
         if (Time.timeScale != 0)
         {
@@ -51,21 +46,7 @@ public class Player : MonoBehaviour
             if (Mouse.current != null)
             {
                 controlPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            }
-            else
-            {
-                float change = 0;
-                if (!inputManager.Touching)
-                {
-                    startPosition = transform.position;
-                }
-                else
-                {
-                    change = fingerStartPos.x - inputManager.PrimaryPosition().x;
-                }
-                controlPosition = new Vector2(startPosition.x - change, transform.position.y);
-            }
-            
+            }     
 
             if ((int)controlPosition.x > (int)transform.position.x)
             {
@@ -76,14 +57,31 @@ public class Player : MonoBehaviour
                 gameObject.transform.localScale = new Vector3(spriteSize.x, spriteSize.y, spriteSize.z);
             }
 
-            transform.position = new Vector2(controlPosition.x, transform.position.y);
+            //transform.position = new Vector2(controlPosition.x, transform.position.y);
+
+            position = new Vector2(controlPosition.x, transform.position.y);
+
+            if (isPaused)
+            {
+                position = Vector2.Lerp(transform.position, position, 0.1f);
+                if((int)controlPosition.x == (int)transform.position.x)
+                {
+                    isPaused = false;
+                }
+            }
 
         }
 
     }
 
+    private void FixedUpdate()
+    {
+        rb.MovePosition(position);
+    }
+
     public void OnPause()
     {
         gameManager.isPaused = !gameManager.isPaused;
+        isPaused = true;
     }
 }
