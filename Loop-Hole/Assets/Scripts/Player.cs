@@ -48,12 +48,7 @@ public class Player : MonoBehaviour
         if (Time.timeScale != 0)
         {
 
-            if (Mouse.current != null)
-            {
-                controlPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            }
-            else
-            {
+
                 float change = 0;
                 if (!inputManager.Touching)
                 {
@@ -64,7 +59,7 @@ public class Player : MonoBehaviour
                     change = fingerStartPos.x - inputManager.PrimaryPosition().x;
                 }
                 controlPosition = new Vector2(startPosition.x - change, transform.position.y);
-            }
+            
             
 
             if ((int)controlPosition.x > (int)transform.position.x)
@@ -75,11 +70,6 @@ public class Player : MonoBehaviour
             {
                 gameObject.transform.localScale = new Vector3(spriteSize.x, spriteSize.y, spriteSize.z);
             }
-
-            transform.position = new Vector2(controlPosition.x, transform.position.y);
-            
-
-            // Testing mobile movement
 
             transform.position = new Vector2(controlPosition.x, transform.position.y);
         }
