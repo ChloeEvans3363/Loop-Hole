@@ -6,6 +6,7 @@ public class WallManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> leftWalls;
     [SerializeField] private List<GameObject> rightWalls;
+    [SerializeField] private List<GameObject> backgroundTiles;
     private int[,] wallOffsets; //I should be using math for this instead but I just could not figure it out
     public GameManager gameManager;
     private int topWall = 0;
@@ -32,6 +33,7 @@ public class WallManager : MonoBehaviour
     {
         MoveWalls(leftWalls);
         MoveWalls(rightWalls);
+        MoveWalls(backgroundTiles);
     }
 
     private void MoveWalls(List<GameObject> wallList)
