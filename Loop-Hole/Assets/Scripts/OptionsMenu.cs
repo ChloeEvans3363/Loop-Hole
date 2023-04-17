@@ -11,6 +11,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private Slider sfxVolume;
     [SerializeField] private Slider musicVolume;
     [SerializeField] private Toggle screenshakeToggle;
+    [SerializeField] private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +35,19 @@ public class OptionsMenu : MonoBehaviour
     public void SetMasterVolume(float value)
     {
         PlayerPrefs.SetFloat("masterVolume", value);
+        audioManager.SetVolumes();
     }
 
     public void SetSFXVolume(float value)
     {
         PlayerPrefs.SetFloat("sfxVolume", value);
+        audioManager.SetVolumes();
     }
 
     public void SetMusicVolume(float value)
     {
         PlayerPrefs.SetFloat("musicVolume", value);
+        audioManager.SetVolumes();
     }
 
     public void ReturnToMain()

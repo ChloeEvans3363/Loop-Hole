@@ -9,6 +9,7 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float startingShakeSpeed = 32f;
     [SerializeField] private float magnitude = 0.25f;
     [SerializeField] private float numberOfShakes = 4f;
+    private bool shakeEnabled;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,12 @@ public class CameraShake : MonoBehaviour
         xAnchor = transform.position.x;
         //StartCoroutine(Shake());
         GameManager.OnDamage += StartShake;
+        shakeEnabled = PlayerPrefs.GetInt("screenshakeEnabled") != 0; //this doesn't seem to work. I don't know why!
     }
 
     public void StartShake()
     {
+        if(shakeEnabled)
         StartCoroutine(Shake());
     }
 

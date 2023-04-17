@@ -1,4 +1,3 @@
-using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     public Sound[] sounds;
+    public float[] soundVolDefaults;
 
     // Start is called before the first frame update
     void Awake()
@@ -48,5 +48,27 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Stop();
+    }
+
+    public void SetVolumes()
+    {
+        float masterVol = PlayerPrefs.GetFloat("masterVolume");
+        float sfxVol = PlayerPrefs.GetFloat("sfxVolume");
+        float musVol = PlayerPrefs.GetFloat("musicVolume");
+        if(sounds.Length == soundVolDefaults.Length)
+        {
+            for(int i = 0; i < sounds.Length; i++)
+            {
+               if(i < 5) //first 5 sounds are sfx, last two are music
+               {
+                    sounds[i].volume = soundVolDefaults[i] * sfxVol * masterVol;
+               } 
+               else
+               {
+                    sounds[i].volume = soundVolDefaults[i] * musVol * masterVol;
+               }
+               sounds[i].source.volume = sounds[i].volume; //I don't actually know if this line works or is necessary
+            }
+        }
     }
 }
