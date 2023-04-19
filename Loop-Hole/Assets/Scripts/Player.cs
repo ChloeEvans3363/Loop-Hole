@@ -81,7 +81,10 @@ public class Player : MonoBehaviour
 
     public void OnPause()
     {
-        gameManager.isPaused = !gameManager.isPaused;
-        isPaused = true;
+        if (!gameManager.dead)
+        {
+            gameManager.isPaused = !gameManager.isPaused;
+            isPaused = true;
+        }
     }
 }
