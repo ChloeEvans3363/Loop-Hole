@@ -31,6 +31,24 @@ public class HowToPlay : MonoBehaviour
     public void ToggleHowToPlay(){
         howToPlayPanel.SetActive(!howToPlayPanel.active);
         mainPanel.SetActive(!mainPanel.active);
+        Debug.Log("Before If Statement");
+        if(!howToPlayPanel.active)
+        {
+            howToPlayFreckle1.SetActive(true);
+            howToPlayMouseIcon.SetActive(true);
+            howToPlayPage2.SetActive(false);
+            howToPlayPage3.SetActive(false);
+
+            currentPage = 1;
+
+            string animationName = "HowToPlay" + currentPage;
+            Animator anim = howToPlayPanel.GetComponent<Animator>();
+            anim.Play(animationName);
+
+            TextMeshProUGUI text = pageNumbers.GetComponent<TextMeshProUGUI>();
+            text.text = currentPage + "/3";
+            Debug.Log("In If Statement");
+        }
     }
 
     public void SwitchPage(bool nextPage){
@@ -78,3 +96,5 @@ public class HowToPlay : MonoBehaviour
         text.text = currentPage + "/3";
     }
 }
+
+
