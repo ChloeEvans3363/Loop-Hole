@@ -171,6 +171,8 @@ public class GameManager : MonoBehaviour, IDataPersistence
             }
             else{
                 playerScript.GetComponent<SpriteRenderer>().sprite = normalSprite;
+                Animator anim = playerScript.gameObject.GetComponent<Animator>();
+                anim.enabled = true;
             }
 
             depth += fallSpeed * Time.deltaTime;
@@ -211,6 +213,9 @@ public class GameManager : MonoBehaviour, IDataPersistence
         {
             iTime = 1.5f;
             health -= amt;
+            Animator anim = playerScript.gameObject.GetComponent<Animator>();
+            anim.enabled = false;
+
             playerScript.GetComponent<SpriteRenderer>().sprite = damagedSprite;
             if(fallSpeed - 10 <= 0)
             {
@@ -224,7 +229,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
             audioManager.Play("Pain");
             OnDamage();
         }
-        
     }
 
     private void Tutorial(int stage)
