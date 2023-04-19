@@ -37,9 +37,6 @@ public class OptionsMenu : MonoBehaviour
             {
                 screenshakeToggle.isOn = false;
             }   
-        } else 
-        {
-            Debug.Log("screenshakeEnabled key doesn't exist!");
         }
         
         if(PlayerPrefs.HasKey("sfxVolume"))
@@ -55,7 +52,6 @@ public class OptionsMenu : MonoBehaviour
         if(PlayerPrefs.HasKey("masterVolume"))
         {
             masterVolume.value = PlayerPrefs.GetFloat("masterVolume");
-            Debug.Log(PlayerPrefs.GetFloat("masterVolume"));
         }
     }
 
