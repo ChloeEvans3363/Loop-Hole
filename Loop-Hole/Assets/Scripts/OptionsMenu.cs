@@ -16,20 +16,47 @@ public class OptionsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("screenshakeEnabled") != 0)
-            screenshakeToggle.isOn = true;
-        else 
-            screenshakeToggle.isOn = false;
-
-        sfxVolume.value = PlayerPrefs.GetFloat("sfxVolume");
-        musicVolume.value = PlayerPrefs.GetFloat("musicVolume");
-        masterVolume.value = PlayerPrefs.GetFloat("masterVolume");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void SetUI()
+    {
+        if (PlayerPrefs.HasKey("screenshakeEnabled"))
+        {
+            if (PlayerPrefs.GetInt("screenshakeEnabled") != 0)
+            {
+                screenshakeToggle.isOn = true;
+            }
+            else
+            {
+                screenshakeToggle.isOn = false;
+            }   
+        } else 
+        {
+            Debug.Log("screenshakeEnabled key doesn't exist!");
+        }
+        
+        if(PlayerPrefs.HasKey("sfxVolume"))
+        {
+            sfxVolume.value = PlayerPrefs.GetFloat("sfxVolume");
+        }
+
+        if(PlayerPrefs.HasKey("musicVolume"))
+        {
+            musicVolume.value = PlayerPrefs.GetFloat("musicVolume");
+        }
+
+        if(PlayerPrefs.HasKey("masterVolume"))
+        {
+            masterVolume.value = PlayerPrefs.GetFloat("masterVolume");
+            Debug.Log(PlayerPrefs.GetFloat("masterVolume"));
+        }
     }
 
     public void SetMasterVolume(float value)
@@ -61,6 +88,7 @@ public class OptionsMenu : MonoBehaviour
     {
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
+        SetUI();
     }
 
     public void ToggleScreenshake(bool shake)

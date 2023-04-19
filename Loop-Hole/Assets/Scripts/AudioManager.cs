@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
                {
                     sounds[i].volume = soundVolDefaults[i] * musVol * masterVol;
                }
-               sounds[i].source.volume = sounds[i].volume; //I don't actually know if this line works or is necessary
+               //sounds[i].source.volume = sounds[i].volume; //I don't actually know if this line works or is necessary
             }
         }
     }
