@@ -11,18 +11,12 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private Slider sfxVolume;
     [SerializeField] private Slider musicVolume;
     [SerializeField] private Toggle screenshakeToggle;
+    [SerializeField] private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("screenshakeEnabled") != 0)
-            screenshakeToggle.isOn = true;
-        else 
-            screenshakeToggle.isOn = false;
-
-        sfxVolume.value = PlayerPrefs.GetFloat("sfxVolume");
-        musicVolume.value = PlayerPrefs.GetFloat("musicVolume");
-        masterVolume.value = PlayerPrefs.GetFloat("masterVolume");
+        
     }
 
     // Update is called once per frame
@@ -31,19 +25,52 @@ public class OptionsMenu : MonoBehaviour
         
     }
 
+    public void SetUI()
+    {
+        if (PlayerPrefs.HasKey("screenshakeEnabled"))
+        {
+            if (PlayerPrefs.GetInt("screenshakeEnabled") != 0)
+            {
+                screenshakeToggle.isOn = true;
+            }
+            else
+            {
+                screenshakeToggle.isOn = false;
+            }   
+        }
+        
+        if(PlayerPrefs.HasKey("sfxVolume"))
+        {
+            sfxVolume.value = PlayerPrefs.GetFloat("sfxVolume");
+        }
+
+        if(PlayerPrefs.HasKey("musicVolume"))
+        {
+            musicVolume.value = PlayerPrefs.GetFloat("musicVolume");
+        }
+
+        if(PlayerPrefs.HasKey("masterVolume"))
+        {
+            masterVolume.value = PlayerPrefs.GetFloat("masterVolume");
+        }
+    }
+
     public void SetMasterVolume(float value)
     {
         PlayerPrefs.SetFloat("masterVolume", value);
+        audioManager.SetVolumes();
     }
 
     public void SetSFXVolume(float value)
     {
         PlayerPrefs.SetFloat("sfxVolume", value);
+        audioManager.SetVolumes();
     }
 
     public void SetMusicVolume(float value)
     {
         PlayerPrefs.SetFloat("musicVolume", value);
+        audioManager.SetVolumes();
     }
 
     public void ReturnToMain()
@@ -57,6 +84,7 @@ public class OptionsMenu : MonoBehaviour
     {
         mainPanel.SetActive(false);
         optionsPanel.SetActive(true);
+        SetUI();
     }
 
     public void ToggleScreenshake(bool shake)

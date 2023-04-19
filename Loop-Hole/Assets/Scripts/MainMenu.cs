@@ -17,12 +17,13 @@ public class MainMenu : MonoBehaviour
             audioManager = FindObjectOfType<AudioManager>();
         }
         audioManager.Play("Menu");
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(Time.timeScale);
     }
 
     public void OpenScene() {

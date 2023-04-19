@@ -672,6 +672,7 @@ MonoBehaviour:
   sfxVolume: {fileID: 608034914}
   musicVolume: {fileID: 1621737666}
   screenshakeToggle: {fileID: 1650672405}
+  audioManager: {fileID: 1092583727}
 --- !u!1001 &45789212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,12 +729,116 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
-      propertyPath: sounds.Array.data[4].loop
-      value: 1
+      propertyPath: soundVolumes.Array.size
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 601786ae30333784897ed407b569daea, type: 3}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[4].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3594471768c01aa489eb7b131cb627d8, type: 3}
     - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
       propertyPath: sounds.Array.data[5].loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: Theme
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c177e7d4ab250fb409700beb86865087, type: 3}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[6].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolumeMult.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[1]
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[5]
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: soundVolDefaults.Array.data[6]
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
@@ -2629,7 +2734,7 @@ MonoBehaviour:
       - m_Target: {fileID: 29605104}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: SetSFXVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4708,7 +4813,7 @@ MonoBehaviour:
       - m_Target: {fileID: 29605104}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: ToggleScreenshake
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5570,7 +5675,7 @@ MonoBehaviour:
       - m_Target: {fileID: 29605104}
         m_TargetAssemblyTypeName: OptionsMenu, Assembly-CSharp
         m_MethodName: SetMasterVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
