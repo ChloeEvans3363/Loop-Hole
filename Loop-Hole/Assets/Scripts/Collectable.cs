@@ -48,7 +48,7 @@ public class Collectable : MonoBehaviour
         {
             if (gameManager.Health == 3 && !gameManager.tutorial)
             {
-                gameManager.Depth += 50;             
+                gameManager.Depth += 50;
             }
             gameManager.Heal();
             Debug.Log("Heal");

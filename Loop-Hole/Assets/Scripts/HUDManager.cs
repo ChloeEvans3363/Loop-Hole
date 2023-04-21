@@ -34,8 +34,7 @@ public class HUDManager : MonoBehaviour
         {
             gameOver.gameObject.SetActive(true);
             gameOver.gameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = "Depth: " + score;
-            gameOver.gameObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "Gem: " + gameManager.Gem;
-            gameOver.gameObject.transform.GetChild(2).GetComponent<UnityEngine.UI.Text>().text = "High Score: " + gameManager.HighScore;
+            gameOver.gameObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "High Score: " + gameManager.HighScore;
         }
 
         UpdateSpeedIcon();

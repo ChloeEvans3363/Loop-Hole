@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public static GameManager gameManager;
     public static InputManager inputManager;
     public float moveSpeed = 0.1f;
+    public GameObject[] gameUI;
     private Vector3 spriteSize;
     private Vector2 controlPosition;
     private Vector2 position;
@@ -83,6 +84,9 @@ public class Player : MonoBehaviour
     {
         if (!gameManager.dead)
         {
+            foreach(GameObject g in gameUI){
+                g.SetActive(!g.active);
+            }
             gameManager.isPaused = !gameManager.isPaused;
             isPaused = true;
         }
