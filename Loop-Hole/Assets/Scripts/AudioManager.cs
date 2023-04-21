@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
     public Sound[] sounds;
-    public float[] soundVolDefaults;
+    public AudioMixerGroup sfxMixer;
+    public AudioMixerGroup musicMixer;
+    public AudioMixerGroup masterMixer;
 
     // Start is called before the first frame update
     void Awake()
@@ -52,23 +55,18 @@ public class AudioManager : MonoBehaviour
 
     public void SetVolumes()
     {
-        float masterVol = PlayerPrefs.GetFloat("masterVolume");
-        float sfxVol = PlayerPrefs.GetFloat("sfxVolume");
-        float musVol = PlayerPrefs.GetFloat("musicVolume");
-        if(sounds.Length == soundVolDefaults.Length)
+        for(int i = 0; i < sounds.Length; i++)
         {
-            for(int i = 0; i < sounds.Length; i++)
+            //values less than 5 are sound effects
+            if (i < 5)
             {
-               if(i < 5) //first 5 sounds are sfx, last two are music
-               {
-                    sounds[i].volume = soundVolDefaults[i] * sfxVol * masterVol;
-               } 
-               else
-               {
-                    sounds[i].volume = soundVolDefaults[i] * musVol * masterVol;
-               }
-               //sounds[i].source.volume = sounds[i].volume; //I don't actually know if this line works or is necessary
+                sounds[i].source.outputAudioMixerGroup = sfxMixer;
             }
+            else
+            {
+                sounds[i].source.outputAudioMixerGroup = musicMixer;
+            }
+            i++;
         }
     }
 }

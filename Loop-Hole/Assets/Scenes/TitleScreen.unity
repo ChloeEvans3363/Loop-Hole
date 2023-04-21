@@ -729,6 +729,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: sfxMixer
+      value: 
+      objectReference: {fileID: 5123972630457830107, guid: eedb29b54f4ccab4d97dafb03d363fa3, type: 2}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: musicMixer
+      value: 
+      objectReference: {fileID: 5883063478255732181, guid: eedb29b54f4ccab4d97dafb03d363fa3, type: 2}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
+      propertyPath: masterMixer
+      value: 
+      objectReference: {fileID: 24300002, guid: eedb29b54f4ccab4d97dafb03d363fa3, type: 2}
+    - target: {fileID: 2515320460649950089, guid: cd21a69e09fa86547bda04cbd11cfa0b, type: 3}
       propertyPath: soundVolumes.Array.size
       value: 6
       objectReference: {fileID: 0}
