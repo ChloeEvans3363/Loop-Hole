@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
             }
 
             //transform.position = new Vector2(controlPosition.x, transform.position.y);
-            position = Vector2.Lerp(transform.position, controlPosition, 0.1f);
+            position = Vector2.Lerp(transform.position, controlPosition, 0.5f);
         }
 
     }
