@@ -29,6 +29,20 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.loop = s.loop;
         }
+
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            //values less than 5 are sound effects
+            if (i < 5)
+            {
+                sounds[i].source.outputAudioMixerGroup = sfxMixer;
+            }
+            else
+            {
+                sounds[i].source.outputAudioMixerGroup = musicMixer;
+            }
+            i++;
+        }
     }
 
     public void Play (string name)
@@ -55,18 +69,8 @@ public class AudioManager : MonoBehaviour
 
     public void SetVolumes()
     {
-        for(int i = 0; i < sounds.Length; i++)
-        {
-            //values less than 5 are sound effects
-            if (i < 5)
-            {
-                sounds[i].source.outputAudioMixerGroup = sfxMixer;
-            }
-            else
-            {
-                sounds[i].source.outputAudioMixerGroup = musicMixer;
-            }
-            i++;
-        }
+        sfxMixer.audioMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVolume"));
+        musicMixer.audioMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVolume"));
+        masterMixer.audioMixer.SetFloat("masterVol", PlayerPrefs.GetFloat("masterVolume"));
     }
 }
