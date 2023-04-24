@@ -16,9 +16,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public bool isPaused = false;
     public HUDManager hudScript;
 
-    public bool tutorial;
-    [SerializeField] private Text tutorialText;
-
     //Stuff from the game score manager. Don't wanna mess up what's already there but moving it here anyway.
     private int coins;
     private int health;
@@ -27,7 +24,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
     private int gems;
     private float iTime;
     public bool dead = false;
-    private float tutorialEndTime = 5.5f;
 
     private int highScore;
     private int totalGems;
@@ -109,15 +105,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
         score = 0;
         iTime = 0f;
         stage = 1;
-        if (!tutorial)
-        {
-            stage = 3;
-            tutorialEndTime = 0;
-        }
-        else
-        {
-            fallSpeed = 10;
-        }
+        fallSpeed = 10;
 
         if (audioManager == null)
         {
@@ -144,12 +132,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
             Time.timeScale = 1;
         }
 
-        if (tutorial)
-        {
-            Tutorial(stage);
-        }
-        else
-        {
+
             if (fallSpeed < speedCap && fallSpeed >= currentFallSpeed)
             {
                 fallSpeed += 2 * Time.deltaTime;
@@ -177,7 +160,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
 
             depth += fallSpeed * Time.deltaTime;
 
-        }
 
         
         //Debug.Log("Score: " + score);
@@ -209,7 +191,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void TakeDamage(int amt)
     {
         
-        if(iTime <= 0f && health != 0 && !tutorial)
+        if(iTime <= 0f && health != 0)
         {
             iTime = 1.5f;
             health -= amt;
@@ -228,42 +210,6 @@ public class GameManager : MonoBehaviour, IDataPersistence
             audioManager.Play("Hit");
             audioManager.Play("Pain");
             OnDamage();
-        }
-    }
-
-    private void Tutorial(int stage)
-    {
-        if (stage == 2)
-        {
-            tutorialText.text = "You can jump on these hearts in order to clear them off!";
-        }
-        if(stage == 3)
-        {
-            tutorialText.text = "Now that they're clean, you can pick them up!";
-
-            if (fallSpeed < 15 && fallSpeed >= currentFallSpeed)
-            {
-                fallSpeed += 2 * Time.deltaTime;
-                currentFallSpeed = fallSpeed;
-            }
-            else if (fallSpeed < currentFallSpeed)
-            {
-                fallSpeed += 10 * Time.deltaTime;
-            }
-            if (fallSpeed > previousFallSpeed)
-            {
-                previousFallSpeed = fallSpeed;
-            }
-
-            if (tutorialEndTime <= 0)
-            {
-                tutorialText.gameObject.SetActive(false);
-                stage++;
-                // Switch stages
-                SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
-                tutorial = false;
-            }
-            tutorialEndTime -= Time.deltaTime;
         }
     }
 
