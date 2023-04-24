@@ -46,7 +46,7 @@ public class Collectable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && spawnTimer <= 0)
         {
-            if (gameManager.Health == 3 && !gameManager.tutorial)
+            if (gameManager.Health == 3)
             {
                 gameManager.Depth += 50;
             }
