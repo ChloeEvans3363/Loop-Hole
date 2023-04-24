@@ -11,7 +11,7 @@ public class Obstacle : MonoBehaviour
     private float wallWidth;
     private float wallX;
     private float limit;
-    private float speed = 5;
+    private float speed = 7;
 
     void Start()
     {
@@ -36,6 +36,9 @@ public class Obstacle : MonoBehaviour
         if (move)
         {
             Move();
+            string animationName = "MovingObs";
+            Animator anim = this.GetComponent<Animator>();
+            anim.Play(animationName);
         }
     }
 
