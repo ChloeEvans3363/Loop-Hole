@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
+        //This Doesn't Work for some reason.
         for (int i = 0; i < sounds.Length; i++)
         {
             //values less than 5 are sound effects
@@ -41,7 +42,6 @@ public class AudioManager : MonoBehaviour
             {
                 sounds[i].source.outputAudioMixerGroup = musicMixer;
             }
-            i++;
         }
     }
 
@@ -69,8 +69,47 @@ public class AudioManager : MonoBehaviour
 
     public void SetVolumes()
     {
-        sfxMixer.audioMixer.SetFloat("sfxVol", PlayerPrefs.GetFloat("sfxVolume"));
-        musicMixer.audioMixer.SetFloat("musicVol", PlayerPrefs.GetFloat("musicVolume"));
-        masterMixer.audioMixer.SetFloat("masterVol", PlayerPrefs.GetFloat("masterVolume"));
+        float sfxVol = 3.42f;
+        if(PlayerPrefs.HasKey("sfxVolume"))
+        {
+            sfxVol = PlayerPrefs.GetFloat("sfxVolume");
+        }
+
+        float musVol = 3.42f; 
+        if(PlayerPrefs.HasKey("musicVolume"))
+        {
+            musVol = PlayerPrefs.GetFloat("musicVolume");
+        }
+
+        float masterVol = 3.42f; 
+        if(PlayerPrefs.HasKey("masterVolume"))
+        {
+            masterVol = PlayerPrefs.GetFloat("masterVolume");
+        }
+        //"snap" to no audio if at the minimum volume for a group
+        //Music and sfx slider minimums are 1.5
+        if(sfxVol > 1.51f)
+        {
+            sfxMixer.audioMixer.SetFloat("sfxVol", Mathf.Pow(sfxVol, 3) - 40);
+        } else
+        {
+            sfxMixer.audioMixer.SetFloat("sfxVol", -80f);
+        }
+        if(musVol > 1.51f)
+        {
+            musicMixer.audioMixer.SetFloat("musicVol", Mathf.Pow(musVol, 3) - 40);
+        } else
+        {
+            musicMixer.audioMixer.SetFloat("musicVol", -80f);
+        }
+        //Master volume slider minimum is 1.5
+        if(masterVol > 1.51f)
+        {
+            masterMixer.audioMixer.SetFloat("masterVol", Mathf.Pow(masterVol, 3) - 40);
+        } else
+        {
+            masterMixer.audioMixer.SetFloat("masterVol", -80f);
+        }
+        //Debug.Log(Mathf.Pow(PlayerPrefs.GetFloat("masterVolume"), 3) - 40);
     }
 }
