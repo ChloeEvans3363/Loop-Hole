@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         if (!gameManager.dead)
         {
             foreach(GameObject g in gameUI){
-                g.SetActive(!g.active);
+                g.SetActive(!g.activeSelf);
             }
             gameManager.isPaused = !gameManager.isPaused;
             isPaused = true;
