@@ -9,7 +9,7 @@ public class HUDManager : MonoBehaviour
 {
     //[SerializeField] private Text healthText;
     [SerializeField] private Text depthText;
-    [SerializeField] private Text gameOver;
+    [SerializeField] private GameObject gameOver;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private List<Image> healthIcons;
     [SerializeField] private Image speedNeedle;
