@@ -13,6 +13,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private List<Image> healthIcons;
     [SerializeField] private Image speedNeedle;
+    public static AudioManager audioManager;
     private int score;
     
     public GameObject pauseScreen;
@@ -37,6 +38,11 @@ public class HUDManager : MonoBehaviour
             gameOver.gameObject.transform.GetChild(1).GetComponent<UnityEngine.UI.Text>().text = "High Score: " + gameManager.HighScore;
         }
 
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         UpdateSpeedIcon();
     }
 
@@ -48,6 +54,7 @@ public class HUDManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("TitleScreen");
+        audioManager.Pause("Theme");
     }
 
     //Set the health text
